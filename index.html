@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2048</title>
+    <style>
+      #field {
+        border: 1px solid black;
+      }
+      .cell {
+        border: 1px solid black;
+        text-align: center;
+        width: 80px;
+        height: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="field"></table>
+    <script>
+      var size = 4;
+      var htmlElements;
+
+      function createField() {
+        if (htmlElements) {
+          return;
+        }
+        htmlElements = [];
+        var table = document.getElementById("field");
+        for (var y = 0; y < size; y++) {
+          var tr = document.createElement("tr");
+          var trElements = [];
+          for (var x = 0; x < size; x++) {
+            var td = document.createElement("td");
+            td.setAttribute("class", "cell");
+            tr.appendChild(td);
+            trElements.push(td);
+          }
+          htmlElements.push(trElements);
+          table.appendChild(tr);
+        }
+      }
+
+      function init() {
+        createField();
+      }
+
+      init();
+    </script>
+  </body>
+</html>
